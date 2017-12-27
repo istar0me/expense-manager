@@ -14,13 +14,14 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
     <script async src="./firebase/config.js"></script>
 
 </head>
 
 <body>
     <!-- 導航列 -->
-    <nav class="navbar navbar-default">
+    <nav id="navbar" class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">Expense Manager</a>
@@ -28,7 +29,7 @@
             <!-- TODO : 到資料庫中撈取年、月份資料再 append -->
             <ul class="nav navbar-nav">
                 <li class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" style="margin:7px;margin-bottom:0px">年
+                    <button id="yearButton" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">年
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
@@ -44,7 +45,7 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" style="margin:7px;margin-bottom:0px">月
+                    <button id="monthButton" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">月
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
@@ -65,7 +66,28 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8 hidden-xs">
-                col-md-8
+                <table class="table table-responsive table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>日期</th>
+                            <th>品項</th>
+                            <th>店家</th>
+                            <th>品名</th>
+                            <th>金額</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- TODO : 到時候append資料
+                              <tr>
+                                <td>`${date.month}/${date.day}`</td>
+                                <td>item.type</td>
+                                <td>shop.name</td>
+                                <td>item.name</td>
+                                <td>item.price</td>
+                              </tr>
+                              -->
+                    </tbody>
+                </table>
             </div>
             <div class="col-md-4">
                 col-md-4
