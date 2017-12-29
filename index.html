@@ -13,21 +13,31 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <!-- optimize for mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <!-- firebase -->
     <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
-    <script async src="./firebase/config.js"></script>
+    <script src="./firebase/config.js"></script>
+    <script src="./firebase/modifyData.js"></script>
+
+    <!-- collapseElement -->
+    <script src="./collapseElement.js"></script>
 
 </head>
 
 <body>
     <!-- 導航列 -->
-    <nav id="navbar" class="navbar navbar-default">
+    <nav id="navbar" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">Expense Manager</a>
+                <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#"></button> -->
             </div>
+            </button>
             <!-- TODO : 到資料庫中撈取年、月份資料再 append -->
-            <ul class="nav navbar-nav">
+            <!-- TODO : 固定導航列 -->
+            <ul id="" class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <button id="yearButton" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">年
                         <span class="caret"></span>
@@ -63,7 +73,7 @@
             </ul>
         </div>
     </nav>
-    <div class="container-fluid">
+    <div id="main" class="container-fluid">
         <div class="row">
             <div class="col-md-8 hidden-xs">
                 <table class="table table-responsive table-striped table-hover">
@@ -77,20 +87,93 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- TODO : 到時候append資料
-                              <tr>
-                                <td>`${date.month}/${date.day}`</td>
-                                <td>item.type</td>
-                                <td>shop.name</td>
-                                <td>item.name</td>
-                                <td>item.price</td>
-                              </tr>
-                              -->
+                        <!-- TODO : 到時候append資料 -->
+                        <tr>
+                            <!-- <td>`${date.month}/${date.day}`</td>
+                            <td>item.type</td>
+                            <td>shop.name</td>
+                            <td>item.name</td>
+                            <td>item.price</td> -->
+                        </tr>
                     </tbody>
                 </table>
             </div>
             <div class="col-md-4">
-                col-md-4
+                <div id="editPanel" class="panel-group">
+                    <!-- 品項面板 -->
+                    <div id="typePanel" class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#editPanel" href="#allType">選擇品項</a>
+                            </h4>
+                        </div>
+                        <div id="allType" class="panel-body collapse in">
+                            <!-- TODO : showShop 有三項功能 :
+                                1. 將 type 匯入資料庫
+                                2. collaspse typePanel 面板
+                                3. 展開 shopPanel 面板
+                            -->
+                            <button class="btn btn-default" onclick="showShop(breakfast)">早</button>
+                            <button class="btn btn-default" onclick="showShop(lunch)">午</button>
+                            <button class="btn btn-default" onclick="showShop(dinner)">晚</button>
+                            <button class="btn btn-default" onclick="showShop(supper)">消夜</button>
+                            <button class="btn btn-default" onclick="showShop(beverage)">飲</button>
+                            <button class="btn btn-default" onclick="showShop(gasStation)">油</button>
+                            <button class="btn btn-default" onclick="showShop(other)">其它</button>
+                        </div>
+                    </div>
+                    <!-- 商家面板 -->
+                    <div id="shopPanel" class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#editPanel" href="#allShop">選擇商家</a>
+                            </h4>
+                        </div>
+                        <div id="allShop" class="panel-body collapse">
+                            <!-- TODO : 根據使用者位置推測可能店家 -->
+                            <button class="btn btn-default btn-block">商家A</button>
+                            <button class="btn btn-default btn-block">商家B</button>
+                            <button class="btn btn-default btn-block">商家C</button>
+                            <form>
+                                <div class="form-group">
+                                    <input id="fillShopName" class="form-control" type="text" placeholder="也可以直接輸入店家名稱" style="margin-top:5px">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- 品名面板 -->
+                    <div id="itemPanel" class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#editPanel" href="#allItem">輸入品名與價格</a>
+                            </h4>
+                        </div>
+                        <div id="allItem" class="panel-body collapse">
+                            <!-- TODO : 根據店家推測品名 -->
+                            <button class="btn btn-default btn-block">品名A</button>
+                            <button class="btn btn-default btn-block">品名B</button>
+                            <button class="btn btn-default btn-block">品名C</button>
+                            <form>
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <input id="fillItemName" class="form-control" type="text" placeholder="品名">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input id="fillItemName" class="form-control" type="number" min="0" placeholder="價格">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div id="analysisPanel" class="container-fluid">
+                    <!-- TODO : 導入 D3.js -->
+                    <!-- 今日統計 -->
+                    <!-- 本月統計 -->
+                    <!-- 圓餅圖 -->
+                </div>
+                <button class="btn btn-primary" onclick="">新增</button>
+                <button class="btn btn-danger" onclick="">重置</button>
             </div>
         </div>
     </div>

@@ -1,0 +1,43 @@
+{
+    "user": {
+        "0": {
+            "name": "",
+            "date": {
+                "year": "",
+                "month": "",
+                "day": "",
+                "hour": "",
+                "minute": "",
+                "second": ""
+            },
+            "shop": {
+                "name": "",
+                "location": {
+                    "lat": "",
+                    "lng": ""
+                }
+            },
+            "item": {
+                "type": "",
+                "name": "",
+                "price": ""
+            }
+        }
+    },
+    "shop": {
+        "0": {
+            "name": "",
+            "location": {
+                "lat": "",
+                "lng": ""
+            },
+            "item": {
+                "0": {
+                    "type": "",
+                    "name": "",
+                    "price": ""
+                }
+            }
+        }
+    }
+}

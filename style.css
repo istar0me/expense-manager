@@ -7,3 +7,25 @@
     margin:7px;
     margin-bottom:0px;
 }
+
+/* add margin due to navbar was fixed */
+#main {
+    margin-top: 60px;
+}
+
+/* set place holder align to center*/
+::-webkit-input-placeholder {
+    text-align: center;
+ }
+ 
+ :-moz-placeholder { /* Firefox 18- */
+    text-align: center;  
+ }
+ 
+ ::-moz-placeholder {  /* Firefox 19+ */
+    text-align: center;  
+ }
+ 
+ :-ms-input-placeholder {  
+    text-align: center; 
+ }
