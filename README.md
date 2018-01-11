@@ -4,7 +4,7 @@
 ### Features
 * RWD : Responsive Webpage Design
 * Authentication : support login with E-mail
-* Security : all data were saved on Firebase, only you can see your personal data
+* Security : all of the data will be stored at the Firebase database, only you can see your personal data
 * Brilliant : When you click/type your shop type, our system will recongnize and recommend related shops/items for you ❤
 
 ### installation
