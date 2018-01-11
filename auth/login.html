@@ -1,0 +1,56 @@
+<html>
+
+<head>
+    <title>login｜Expense Manager</title>
+    <meta charset="UTF-8">
+    <!-- style -->
+    <link rel="stylesheet" href="./style.css">
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- optimize for mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+    <script src="../firebase/config.js"></script>
+    <script defer src="./config.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid align-middle">
+        <div class="row">
+            <div class="col-sm-4">
+                <!-- <div class="col-md-8 hidden-xs"> -->
+                <!-- <div class="jumbotron text-center" style="background-color:transparent">
+                    <h1 style="color:#FFFFFF"></h1>
+                </div> -->
+            </div>
+            <div class="col-sm-4 pagination-centered" style="background-color:rgba(255,255,255,0.9);padding:40px;margin:40px auto;border-radius:20px">
+                <h1>註冊與登入</h1>
+                <form>
+                    <div class="form-group">
+                        <label for="txtEmail">電子信箱</label>
+                        <input class="form-control" id="txtEmail" type="email" placeholder="Email">
+                        <!-- <small class="text-muted">我們決不透漏您的電子信箱</small> -->
+                    </div>
+                    <div class="form-group">
+                        <label for="txtPassword">密碼</label>
+                        <input class="form-control" id="txtPassword" type="password" placeholder="Password">
+                    </div>
+                </form>
+                <div style="margin: 20 0">
+                    <button id="btnLogin" class="btn btn-success">登入</button>
+                    <button id="btnLogout" class="btn btn-danger hide">登出</button>
+                    <button id="btnSignUp" class="btn btn-default">註冊</button>
+                </div>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+    </div>
+</body>

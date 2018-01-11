@@ -1,0 +1,7 @@
+* [How do I redirect with Javascript? - Stack Overflow](https://stackoverflow.com/questions/4744751/how-do-i-redirect-with-javascript)
+* [MUI - Material Design Buttons](https://www.muicss.com/docs/v1/css-js/buttons)
+* [Submitting Forms to Firebase](https://codepen.io/quinnkap/pen/EaedPm)
+* [Components · Bootstrap](https://getbootstrap.com/docs/3.3/components/#nav-tabs)
+* [How To Sort a Table](https://www.w3schools.com/howto/howto_js_sort_table.asp)
+* [HTML datalist Tag](https://www.w3schools.com/tags/tag_datalist.asp)
+* [Getting started with Firebase Auth on the Web - Firecasts](https://www.youtube.com/watch?v=-OKrloDzGpU)

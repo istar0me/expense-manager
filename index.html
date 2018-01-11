@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Expense</title>
+    <title>Expense Manager</title>
     <meta charset="UTF-8">
     <!-- style -->
     <link rel="stylesheet" href="./style.css">
@@ -19,86 +19,87 @@
     <!-- firebase -->
     <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
     <script src="./firebase/config.js"></script>
-    <script src="./firebase/modifyData.js"></script>
+    <script src="./auth/config.js"></script>
+    <script async defer src="./firebase/modifyData.js"></script>
 
-    <!-- collapseElement -->
-    <script src="./collapseElement.js"></script>
+    <!-- TODO : add web font -->
 
 </head>
 
 <body>
     <!-- 導航列 -->
-    <nav id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <nav id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">Expense Manager</a>
-                <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#"></button> -->
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#" style="color:#FFFFFF">Expense Manager</a>
             </div>
-            </button>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul id="" class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" style="font-size:16px" class="hidden-xs">&lt
+                        </a>
+                        <a href="#" style="font-size:16px" class="visible-xs-block">顯示上個月</a>
+                    </li>
+                    <li>
+                        <a href="#" style="font-size:16px">2018/1
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" style="font-size:16px" class="hidden-xs">&gt
+                        </a>
+                        <a href="#" style="font-size:16px" class="visible-xs-block">顯示下個月
+                        </a>
+                    </li>
+                    <li>
+                        <a id="btnLogout" style="margin-right:20px" onclick="logout()">登出</a>
+                    </li>
+                    <!-- <li class="dropdown">
+                        <button id="yearButton" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">年
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#">2017</a>
+                            </li>
+                            <li>
+                                <a href="#">2016</a>
+                            </li>
+                            <li>
+                                <a href="#">2015</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <button id="monthButton" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">月
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#">12</a>
+                            </li>
+                            <li>
+                                <a href="#">11</a>
+                            </li>
+                            <li>
+                                <a href="#">10</a>
+                            </li>
+                        </ul>
+                    </li> -->
+                </ul>
+            </div>
+            <!-- </button> -->
             <!-- TODO : 到資料庫中撈取年、月份資料再 append -->
             <!-- TODO : 固定導航列 -->
-            <ul id="" class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <button id="yearButton" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">年
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="#">2017</a>
-                        </li>
-                        <li>
-                            <a href="#">2016</a>
-                        </li>
-                        <li>
-                            <a href="#">2015</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <button id="monthButton" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">月
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="#">12</a>
-                        </li>
-                        <li>
-                            <a href="#">11</a>
-                        </li>
-                        <li>
-                            <a href="#">10</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
         </div>
     </nav>
     <div id="main" class="container-fluid">
         <div class="row">
-            <div class="col-md-8 hidden-xs">
-                <table class="table table-responsive table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th>日期</th>
-                            <th>品項</th>
-                            <th>店家</th>
-                            <th>品名</th>
-                            <th>金額</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- TODO : 到時候append資料 -->
-                        <tr>
-                            <!-- <td>`${date.month}/${date.day}`</td>
-                            <td>item.type</td>
-                            <td>shop.name</td>
-                            <td>item.name</td>
-                            <td>item.price</td> -->
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div id="editPanel" class="panel-group">
                     <!-- 品項面板 -->
                     <div id="typePanel" class="panel panel-default">
@@ -113,13 +114,14 @@
                                 2. collaspse typePanel 面板
                                 3. 展開 shopPanel 面板
                             -->
-                            <button class="btn btn-default" onclick="showShop(breakfast)">早</button>
-                            <button class="btn btn-default" onclick="showShop(lunch)">午</button>
-                            <button class="btn btn-default" onclick="showShop(dinner)">晚</button>
-                            <button class="btn btn-default" onclick="showShop(supper)">消夜</button>
-                            <button class="btn btn-default" onclick="showShop(beverage)">飲</button>
-                            <button class="btn btn-default" onclick="showShop(gasStation)">油</button>
-                            <button class="btn btn-default" onclick="showShop(other)">其它</button>
+                            <button class="btn btn-default" id="breakfastBtn" onclick="itemTypeButton('breakfast','早餐')">早餐</button>
+                            <button class="btn btn-default" id="lunchBtn" onclick="itemTypeButton('lunch','午餐')">午餐</button>
+                            <button class="btn btn-default" id="dinnerBtn" onclick="itemTypeButton('dinner','晚餐')">晚餐</button>
+                            <button class="btn btn-default" id="supperBtn" onclick="itemTypeButton('supper','消夜')">消夜</button>
+                            <button class="btn btn-default" id="beverageBtn" onclick="itemTypeButton('beverage','飲料')">飲料</button>
+                            <button class="btn btn-default" id="refuelBtn" onclick="itemTypeButton('refuel','加油')">加油</button>
+                            <button class="btn btn-default" id="recreationBtn" onclick="itemTypeButton('recreation','娛樂')">娛樂</button>
+                            <button class="btn btn-default" id="otherBtn" onclick="itemTypeButton('other','其它')">其它</button>
                         </div>
                     </div>
                     <!-- 商家面板 -->
@@ -131,9 +133,9 @@
                         </div>
                         <div id="allShop" class="panel-body collapse">
                             <!-- TODO : 根據使用者位置推測可能店家 -->
-                            <button class="btn btn-default btn-block">商家A</button>
-                            <button class="btn btn-default btn-block">商家B</button>
-                            <button class="btn btn-default btn-block">商家C</button>
+                            <button class="btn btn-default btn-block" onclick="shopNameButton('商家A')">商家A</button>
+                            <button class="btn btn-default btn-block" onclick="shopNameButton('商家B')">商家B</button>
+                            <button class="btn btn-default btn-block" onclick="shopNameButton('商家C')">商家C</button>
                             <form>
                                 <div class="form-group">
                                     <input id="fillShopName" class="form-control" type="text" placeholder="也可以直接輸入店家名稱" style="margin-top:5px">
@@ -150,17 +152,13 @@
                         </div>
                         <div id="allItem" class="panel-body collapse">
                             <!-- TODO : 根據店家推測品名 -->
-                            <button class="btn btn-default btn-block">品名A</button>
-                            <button class="btn btn-default btn-block">品名B</button>
-                            <button class="btn btn-default btn-block">品名C</button>
+                            <button class="btn btn-default btn-block" onclick="itemNameButton('品名A')">品名A</button>
+                            <button class="btn btn-default btn-block" onclick="itemNameButton('品名B')">品名B</button>
+                            <button class="btn btn-default btn-block" onclick="itemNameButton('品名C')">品名C</button>
                             <form>
                                 <div class="form-group">
-                                    <div class="col-md-6">
-                                        <input id="fillItemName" class="form-control" type="text" placeholder="品名">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input id="fillItemName" class="form-control" type="number" min="0" placeholder="價格">
-                                    </div>
+                                    <input id="fillItemName" class="form-control" type="text" placeholder="品名" style="margin-top:5px">
+                                    <input id="fillItemPrice" class="form-control" type="number" min="0" placeholder="　價格" style="margin-top:5px">
                                 </div>
                             </form>
                         </div>
@@ -172,11 +170,37 @@
                     <!-- 本月統計 -->
                     <!-- 圓餅圖 -->
                 </div>
-                <button class="btn btn-primary" onclick="">新增</button>
-                <button class="btn btn-danger" onclick="">重置</button>
+                <button class="btn btn-primary" onclick="writeUserData()">新增</button>
+                <!-- 要改回 writeUserData() -->
+                <button class="btn btn-danger" onclick="clearData()">重置</button>
+            </div>
+            <div class="col-md-9">
+                <table class="table table-responsive table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>日期</th>
+                            <th>品項</th>
+                            <th>店家</th>
+                            <th>品名</th>
+                            <th>金額</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                        <!-- TODO : 到時候append資料 -->
+                        <!-- <tr>
+                            <td>`${date.month}/${date.day}`</td>
+                            <td>item.type</td>
+                            <td>shop.name</td>
+                            <td>item.name</td>
+                            <td>item.price</td>
+                        </tr> -->
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
+    <script src="./firebase/showDataOnTable.js"></script>
 </body>
 
 </html>
